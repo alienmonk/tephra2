@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<run>
+	<about>
+	  <label>constant from the Northeast</label>
+	</about>
+ <input>
+
+   <string id="wind">
+	<current>constant</current>
+   </string>  
+</input>
+</run>
+
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<run>
+	<about>
+	  <label>Pululagua</label>
+	</about>
+ <input>
+
+   <string id="grid">
+	<current>Pululagua</current>
+   </string>  
+</input>
+</run>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<run>
+	<about>
+	  <label>Cerro Negro</label>
+	</about>
+ <input>
+
+   <string id="grid">
+	<current>Cerro_Negro</current>
+   </string>  
+</input>
+</run>
+

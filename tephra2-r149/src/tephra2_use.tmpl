@@ -1,0 +1,12 @@
+conflict TEPHRA2_CHOICE
+
+desc "forecast tephra dispersion in a given location"
+
+help "Tephra2 uses the advection diffusion equation to forecast tephra dispersion in a given location based on a user-defined set of eruptive conditions. This loads the Tephra2 (revision @@REV@@) executable into your environment."
+
+version=@@REV@@
+location=/apps/tephra2/${version}
+
+prepend PATH    ${location}/bin
+
+tags MATHSCI

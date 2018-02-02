@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<run>
+	<about>
+	  <label>Irazu</label>
+	</about>
+ <input>
+
+   <string id="grid">
+	<current>Irazu</current>
+   </string>  
+</input>
+</run>
+

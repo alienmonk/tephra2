@@ -1,0 +1,541 @@
+<?xml version="1.0"?>
+<run>
+<about>
+<label>Irazu 1963</label>
+</about>
+
+    <input>
+
+<group id = "tabs">
+<group id = "Eruption_Parameters">
+	<about>
+	  <label>Eruption Parameters</label>
+	  <description></description>
+	</about>
+     
+        <number id="Plume_Height">
+            <about>
+                <label>Plume Height (m)</label>
+                <description>Maximum height of erupting column (m)</description>
+            </about>
+            <current>8000</current>
+        </number>
+        <number id="Eruption_Mass">
+            <about>
+                <label>Eruption Mass (kg)</label>
+                <description>Total mass of tephra erupted from the volcano (kg)</description>
+            </about>
+            <current>5.9e10</current>
+        </number>
+        <number id="Max_Grainsize">
+            <about>
+                <label>Max Grainsize (phi units)</label>
+                <description>Maximum particle size of tephra erupted from the volcano (in phi units)</description>
+            </about>
+            <current>-5.0</current>
+        </number>
+        <number id="Min_Grainsize">
+            <about>
+                <label>Min Grainsize (phi units)</label>
+                <description>Minimum particle size of tephra erupted from the volcano (in phi units)</description>
+            </about>
+            <current>5.0</current>
+        </number>
+        <number id="Median_Grainsize">
+            <about>
+                <label>Median Grainsize (phi units)</label>
+                <description>Madian particle sie of tephra erupted fromt the volcano (in phi units)</description>
+            </about>
+            <current>-1</current>
+        </number>
+        <number id="STD_Grainsize">
+            <about>
+                <label>STD Grainsize (phi units)</label>
+                <description>Standard deviation of particle size of tephra erupted from the volcano</description>
+            </about>
+           <current>2</current>
+        </number>
+        <number id="Vent_Easting">
+            <about>
+                <label>Vent Easting (UTM)</label>
+                <description>Vent location easting UTM coordinate</description>
+            </about>
+            <current>187500</current>
+        </number>
+        <number id="Vent_Northing">
+            <about>
+                <label>Vent Northing (UTM)</label>
+                <description>Vent location northing UTM coordinate</description>
+            </about>
+            <current>1104550</current>
+        </number>
+        <number id="Vent_Elevation">
+            <about>
+                <label>Vent Elevation (asl)</label>
+                <description>Vent elevation above sea level (m)</description>
+            </about>
+            <current>3432</current>
+        </number>
+        <number id="Eddy_Constant">
+            <about>
+                <label>Eddy Constant</label>
+                <description>Eddy constant</description>
+            </about>
+            <current>0.04</current>
+        </number>
+        <number id="Diffusion_Coefficient">
+            <about>
+                <label>Diffusion Coefficient (m^2/s)</label>
+                <description>Diffusion coefficient</description>
+            </about>
+            <current>800</current>
+        </number>
+        <number id="Fall_Time_Threshold">
+            <about>
+                <label>Fall Time Threshold (s)</label>
+                <description>Fall time threshold of particles, in seconds</description>
+            </about>
+           <current>100000</current>
+        </number>
+        <number id="Lithic_Density">
+            <about>
+                <label>Lithic Density (kg/m^3)</label>
+                <description>Lithic density of particles (kg/m^3)</description>
+            </about>
+            <current>1000</current>
+        </number>
+        <number id="Pumice_Density">
+            <about>
+                <label>Pumice Density (kg/m^3)</label>
+                <description>Pumice density (kg/m^3)</description>
+            </about>
+           <current>1000</current>
+        </number>
+        <number id="Column_Steps">
+            <about>
+                <label>Column Steps</label>
+                <description>Number of steps to consider in column integration</description>
+            </about>
+            <current>100</current>
+        </number>
+        <number id="Plume_Model">
+            <about>
+                <label>Plume Model</label>
+                <description>Plume model</description>
+            </about>
+            <current>0</current>
+        </number>
+        <number id="Plume_Ratio">
+            <about>
+                <label>Plume Ratio</label>
+                <description>Plume ratio</description>
+            </about>
+            <current>0.1</current>
+        </number>
+
+</group>
+
+<group id = "Grid">
+	<about><label>Grid</label><description></description></about>
+
+     <boolean id="Grid_loaded">
+	<about>
+	<label>Use grid file uploaded above?</label>
+	<description>'yes' will override the grid specifications below </description> </about>
+	<current>no</current>
+	</boolean>
+	
+    <number id="Min_East">
+	<about>
+	  <label>Number of km west of volcano to consider  </label>
+	  <description></description>
+	</about>
+	<current>75</current>
+     </number>
+
+    <number id="Max_East">
+	<about>
+	  <label>Number of km east of volcano to consider  </label>
+	  <description></description>
+	</about>
+	<current>75</current>
+     </number>
+
+    <number id="Min_North">
+	<about>
+	  <label>Number of km south of volcano to consider</label>
+	  <description></description>
+	</about>
+	<current>75</current>
+     </number>
+
+    <number id="Max_North">
+	<about>
+	  <label>Number of km north of volcano to consider</label>
+	  <description></description>
+	</about>
+	<current>75</current>
+     </number>
+
+    <number id="Elev_Landing">
+	<about>
+	  <label>Elevation of landing surface (masl)</label>
+	  <description></description>
+	</about>
+	<current>2800</current>
+     </number>
+
+    <number id="Spacing">
+	<about>
+	  <label>Spacing between square grid points (km)</label>
+	  <description></description> 
+	</about>
+	<current>1.5</current>
+     </number>
+</group>
+
+<group id = "Locations">
+	<about>
+	  <label>Locations</label>
+	  <description></description>
+	</about>
+
+	<string id = "Volcano_Name">
+	  <about>
+		<label>Volcano Name:</label></about>
+		<current>Irazu</current>
+	</string>
+
+      <number id="Shift_Volc_Name">
+	<about>
+	  <label>Shift volcano name East by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	  <enable>input.group(tabs).group(Locations).choice(Num_Points)>0</enable>
+	</about>
+	<current>0</current>
+      </number>
+
+      <boolean id="Plot_Points">
+	<about>
+	<label> Plot additional locations on contour map? </label>
+	<description> </description> </about>
+	<current>no</current>
+	</boolean>
+
+	<choice id = "Num_Points">
+	<about>
+	  <label>Number of locations to plot?</label>
+	  <description></description>
+	<enable>input.group(tabs).group(Locations).boolean(Plot_Points)=="yes"</enable>
+	</about>
+	<option><about><label>1</label><description></description></about><value>1</value></option>
+	<option><about><label>2</label><description></description></about><value>2</value></option>
+	<option><about><label>3</label><description></description></about><value>3</value></option>
+	<option><about><label>4</label><description></description></about><value>4</value></option>
+	<option><about><label>5</label><description></description></about><value>5</value></option>
+	<current>0</current>
+</choice>
+
+<group id = "Locations2Plot">
+	<about>
+	<label>Additional Locations to Plot</label>
+	</about>
+
+	<string id = "Location1">
+	  <about>
+		<label>Location 1:</label>
+	</about>
+	<current> </current>
+	</string>
+
+      <number id="Loc_Easting1">
+	<about>
+	  <label>Easting 1 (UTM)</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Loc_Northing1">
+	<about>
+	  <label>Northing 1 (UTM)</label>
+	  <description>location northing UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+
+	<string id = "Location2">
+	  <about><label>Location 2:</label></about>
+	  <current> </current>
+	</string>
+
+
+      <number id="Loc_Easting2">
+	<about>
+	  <label>Easting 2 (UTM)</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Loc_Northing2">
+	<about>
+	  <label>Northing 2 (UTM)</label>
+	  <description>location northing UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+	<string id = "Location3">
+	  <about>
+		<label>Location 3:</label>
+	</about>
+	</string>
+
+      <number id="Loc_Easting3">
+	<about>
+	  <label>Easting 3 (UTM)</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Loc_Northing3">
+	<about>
+	  <label>Northing 3 (UTM)</label>
+	  <description>location northing UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+
+</group>
+</group>
+
+
+<group id = "Plot_Refinement">
+	<about><label>Plot Refinement (optional)</label></about>
+
+      <boolean id="RePlot">
+	<about>
+	<label> Re-plot only (will not re-calculate mass accumulations)</label>
+	<description> Alter the plot without performing mass accumulation calculations.</description> </about>
+	<current>no</current>
+	</boolean>
+
+<group id = "tabs">
+
+<group id = "Contours">
+	<about>
+	<label>Contours</label></about>
+
+      <number id="Cmin">
+	<about>
+	  <label>Minimum Mass to Consider (kg/m^2) :</label>
+	  <description></description>
+	</about>
+	<current>0.1</current>
+      </number>
+
+<string id = "Contours2Plot">
+	<about><label>Contours to plot (kg/m^2)</label></about>
+	<size>50x10</size>
+	<current>.25 
+.40
+.55
+.70
+.85
+1 a
+2.5
+4.0
+5.5
+7.0
+8.5
+10 a
+25
+40
+55
+70
+85
+100 a
+250
+400
+550
+700
+850
+1000 a
+2500
+4000
+5500
+7000
+8500
+10000 a
+25000
+40000
+55000
+70000
+85000
+100000 a
+250000
+400000
+550000
+700000
+850000
+1000000 a
+2500000
+4000000
+5500000
+7000000
+8500000
+10000000 a</current>
+</string>
+
+</group>
+
+
+<group id = "Map_Bound">
+	<about><label>Change plot boundaries</label></about>
+
+      <number id="Extra_Left">
+	<about>
+	  <label>Space to add to Left of plot (km):</label>
+	  <description></description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Extra_Right">
+	<about>
+	  <label>Space to add to Right of plot (km):</label>
+	  <description></description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Extra_Top">
+	<about>
+	  <label>Space to add to Top of plot (km):</label>
+	  <description></description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Extra_Bottom">
+	<about>
+	  <label>Space to add to Bottom of plot (km):</label>
+	  <description></description>
+	</about>
+	<current>0</current>
+      </number>
+</group>
+
+<group id = "Plot_Labels">
+	<about><label>Shift Labels</label></about>
+
+      <number id="Shift_Volc_Name">
+	<about>
+	  <label>Shift Volcano label East by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Volc_NameN">
+	<about>
+	  <label>Shift Volcano label North by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc1">
+	<about>
+	  <label>Shift Location 1 label East by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc1N">
+	<about>
+	  <label>Shift Location 1 label North by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc2">
+	<about>
+	  <label>Shift Location 2 label East by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc2N">
+	<about>
+	  <label>Shift Location 2 label North by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc3">
+	<about>
+	  <label>Shift Location 3 label East by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc3N">
+	<about>
+	  <label>Shift Location 3 label North by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc4">
+	<about>
+	  <label>Shift Location 4 label East by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+	</number>
+
+      <number id="Shift_Loc4N">
+	<about>
+	  <label>Shift Location 4 label North by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc5">
+	<about>
+	  <label>Shift Location 5 label East by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+
+      <number id="Shift_Loc5N">
+	<about>
+	  <label>Shift Location 5 label North by (m):</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<current>0</current>
+      </number>
+</group>
+</group>
+</group>
+
+
+</group>
+
+
+  </input>
+ 
+</run>

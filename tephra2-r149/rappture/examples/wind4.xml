@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<run>
+	<about>
+	  <label>random wind field: Irazu dataset</label>
+	</about>
+ <input>
+
+   <string id="wind">
+	<current>Random_I</current>
+   </string>  
+</input>
+</run>
+
+
+

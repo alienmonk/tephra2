@@ -1,0 +1,36 @@
+<html> 
+<body>
+<p> <font size="+2">Welcome to the student version of the Tephra2 numerical model</font> </p>
+
+<p> This graphical user interface calls the same version of Tephra2 as the researcher user interface. The differences lie in the manner that information is presented and the way in which the user interacts with all model inputs.</p>
+
+<p> Feel free to hit 'simulate' in the lower right at any time if you just want to run the model and see what happens. The defaults are set to model a violent strombolian eruption at Cerro Negro Volcano. </p>
+
+<p> To run the model simply chose a volcano, a wind field, and an eruption type. The defaults are Cerro Negro Volcano with a random wind field sampled from actual wind data collected in the vicinity of the volcano. The default eruption type is violent strombolian. </p>
+
+<p><font size="+2">Volcano:</font> Choose one of the pre-loaded volcanoes. Topo maps for each of these volcanoes are provided. When available, thickness data from actual eruptions are also provided.</p>
+
+<p><font size="+2">Wind:</font> Select a wind field. Wind is considered to be constant within a horizontal plane but can vary with height in the atmosphere. Choices include simplified wind fields as well as more realistic wind fields sampled from the reanalysis global atmospheric model. The 'Worst Case Scenario' option will produce the strongest feasible winds directed towards the nearest major population center.</p>
+
+<p><font size="+2">Eruption Type:</font> Sets the explosivity or size of the eruption. The mass and column height will automatically change for different eruption types. The user may alter these parameters only within the pre-determined ranges. </p>
+
+<p><font size="+2">Compare model result to field data:</font> If data is available for the volcano in question, this option will automatically compare model results to thickness data collected in the field at the volcano in question. </p>
+
+<p><font size="+2">Re-use previous wind field:</font> If the previous run selected a random wind field, checking this box will allow the model to use that same wind field again. Otherwise a new random atmospheric model will be selected for each run. </p>
+
+<p><font size="+2">Tabs:</font> </p>
+<p>ERUPTION PARAMTERS: Here you may alter the parameters which relate to the style of eruption selected (column height and mass) as well as the grainsize parameters. The grain size distribution is modeled as a Gaussian distribution with the median value set by the user. The density of large and small particles may be different or it may be set to the same value. </p>
+
+<p>DEM: DEM stands for Digital Elevation Model. Here you specify the parameters of the grid to be input to the Tephra2 program. The grid should be large enough and dense enough to capture all of the tephra erupted from the volcano but small enough that the model can run in a reasonable amount of time. The larger or denser the grid, the more time that the model will take to complete all calculations.</p>
+
+<p>SIMULATION: Here you may set various model parameters including the shape of the plume and the number of steps into which to discretize the column. The diffusion coefficient controls the amount of diffusion that particles experience in the atmosphere while the particle release height changes the location in the plume from which the majority of particles are released. This is also where you may view a flow chart for the Tephra2 code. Scroll to the bottom for a more in-depth explanation of this flow chart.</p>
+
+<p>IMAGES: A photograph of and location map for each volcano is provided. This should help to familiarize you with the volcano under study and the proximity of the volcano to nearby waterways and cities.</p>
+
+<p><font size="+2">The Flow Chart:</font> Information coming soon.
+</p>
+
+
+
+</body>
+</html>

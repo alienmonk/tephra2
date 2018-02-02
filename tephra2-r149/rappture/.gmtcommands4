@@ -1,0 +1,12 @@
+# GMT common arguments shelf
+-Ba0.5::/a0.5::/:.Colima Plinian Eruption:WSen
+-Jm1:1500000
+-JX6i
+-Jx/0i
+-R639355/715000/2155113/2300000
+-X1i
+-Y2i
+-jX6i
+EOF
+OF
+EOF

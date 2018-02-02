@@ -1,0 +1,684 @@
+<?xml version="1.0"?>
+<run>
+   <tool>
+      <title>Tephra2</title>
+      <about>Calculates the mass of tephra accumulation (kg) at points about a volcano</about>
+      <command>perl @tool/t2wrap.pl @driver</command>
+      <limits>
+        <cputime>unlimited</cputime>
+      </limits>
+      <layout>wizard</layout>
+      <reportJobFailures>1</reportJobFailures>
+    </tool>
+
+    <input>
+
+ 
+
+  <loader>
+    <about>
+      <label>Archivo de viento</label>
+      <description>Use este botón para abrir o subir el archivo de vientos.</description>
+    </about>
+    <upload>
+       <to>input.string(wind)</to>
+    </upload>
+        <example>wind.xml</example> 
+        <example>wind2.xml</example> 
+        <example>wind3.xml</example>
+        <example>wind4.xml</example>
+        <example>wind5.xml</example>
+  </loader>
+
+  <loader>
+    <about>
+      <label>Archivo de configuración (opcional)</label>
+      <description>Seleccione aquí para abrir o cargar un archivo de configuración en vez de ingresar los valores en el
+campo de abajo.</description>
+    </about>
+    <upload>
+       <to>input.string(config)</to>
+    </upload>
+        <example>config.xml</example> 
+        <example>config2.xml</example> 
+        <example>config3.xml</example>
+  </loader>
+
+  <loader>
+    <about>
+      <label>Archivo de red (opcional)</label>
+      <description>Seleccione aquí para abrir o cargar la grilla de ubicaciones alrededor del volcán donde se calculará la acumulación de tefra.</description>
+    </about>
+    <upload>
+       <to>input.string(grid)</to>
+    </upload>
+        <example>grid.xml</example> 
+        <example>grid2.xml</example> 
+        <example>grid3.xml</example>
+  </loader>
+
+   <string id="wind">
+	<about>
+	  <label>Wind</label>
+	  <enable>no</enable>
+	</about>
+   </string>
+
+   <string id="grid">
+	<about>
+	  <label>grid</label>
+     	  <enable>no</enable>
+	</about>
+   </string>
+
+   <string id="config">
+	<about>
+	  <label>config</label>
+     	  <enable>no</enable>
+	</about>
+   </string>
+
+  <string id="language">
+	<about>
+	  <label>language</label>
+     	  <enable>no</enable>
+	</about>
+	  <default>Spanish</default>
+   </string>
+
+      <boolean id="Save_Workspace">
+	<about>
+	<label> ¿Grabar una copia de los resultados numéricos en el escritorio de Vhub?</label>
+	<description> Graba una copia de los resultados numéricos en una carpeta del escritorio de Vhub. Estos archivos
+pueden ser grandes y ocupar mucho espacio.</description> </about>
+	<default>no</default>
+	</boolean>
+
+<choice id = "Run_Number">
+	<about>
+	  <label>Graba una copia: /Tephra2output/ </label>
+	  <description></description>
+	<enable>input.boolean(Save_Workspace)=="yes"</enable>
+	</about>
+	  <default>1</default>
+	<option><about><label>1</label><description></description></about><value>1</value></option>
+	<option><about><label>2</label><description></description></about><value>2</value></option>
+	<option><about><label>3</label><description></description></about><value>3</value></option>
+	<option><about><label>4</label><description></description></about><value>4</value></option>
+	<option><about><label>5</label><description></description></about><value>5</value></option>
+	<option><about><label>6</label><description></description></about><value>6</value></option>
+	<option><about><label>7</label><description></description></about><value>7</value></option>
+	<option><about><label>8</label><description></description></about><value>8</value></option>
+	<option><about><label>9</label><description></description></about><value>9</value></option>
+	<option><about><label>10</label><description></description></about><value>10</value></option>
+</choice>
+
+      <boolean id="ReWind">
+	<about>
+	<label>¿Re-utilizar archivo anterioir viento?</label>
+	<description> Enables user to select a single random wind field for multiple runs.</description> </about>
+	<default>no</default>
+	</boolean>
+
+<group id = "tabs">
+<group id = "Eruption_Parameters">
+	<about>
+	  <label>Parámetros de la Erupción</label>
+	  <description></description>
+	</about>
+
+      <number id="Plume_Height">
+	<about>
+	  <label>Altura de la Columna (m)</label>
+	  <description>Altura Máxima de la Columna Eruptiva (m)</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Eruption_Mass">
+	<about>
+	  <label>Masa de la Erupción (kg)</label>
+	  <description>Masa Total de Tefra/piroclastos Expulsada por el Volcán (kg)</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Max_Grainsize">
+	<about>
+	  <label>Tamaño de grano Max (unidades phi)</label>
+	  <description>Tamaño máximo de tefra/piroclasto expulsados por el volcán (unidades phi)</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Min_Grainsize">
+	<about>
+	  <label>Tamaño de grano Min (unidades phi)</label>
+	  <description>Mínimo del tamaño de partícula de tefra erupción del volcán (unidades phi)</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Median_Grainsize">
+	<about>
+	  <label>Tamaño de grano Medio (unidades phi)</label>
+	  <description>Tamaño medio de tefra/piroclasto expulsados por el volcán (unidades phi)</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="STD_Grainsize">
+	<about>
+	  <label>Desviación Estandár del Tamaño de grano (unidades phi)</label>
+	  <description>Desviación Estandár del Tamaño de grano de tefra/piroclasto expulsados por el volcán</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Vent_Easting">
+	<about>
+	  <label>Boca Coord. Este (UTM)</label>
+	  <description>Boca Coord. Este.</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Vent_Northing">
+	<about>
+	  <label>Boca Coord. Norte (UTM)</label>
+	  <description> Boca Coord. Norte.</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Vent_Elevation">
+	<about>
+	  <label>Boca Elevación (m)</label>
+	  <description>Boca Elevación, metros sobre el nivel de mar</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Eddy_Constant">
+	<about>
+	  <label>Constante de Eddy</label>
+	  <description>Constante de Eddy</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Diffusion_Coefficient">
+	<about>
+	  <label>Coeficiente de Difusión (m^2/s)</label>
+	  <description>Coeficiente de Difusión </description>
+	</about>
+	<default>0</default>
+      </number>
+      <number id="Fall_Time_Threshold">
+	<about>
+	  <label>Umbral del tiempo de caída (s)</label>
+	  <description>Umbral del tiempo de caída de partículas</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Lithic_Density">
+	<about>
+	  <label>Densidad de Clastos pequeños (kg/m^3)</label>
+	  <description>Densidad de Clastos pequeños (kg/m^3)</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Pumice_Density">
+	<about>
+	  <label>Densidad de Clastos grandes (kg/m^3)</label>
+	  <description>Densidad de Clastos grandes(kg/m^3)</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Column_Steps">
+	<about>
+	  <label>Capas de la Columna</label>
+	  <description>Número de Pasos a considerar en la Columna de Integración</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Plume_Model">
+	<about>
+	  <label>Modelo de Columna</label>
+	  <description>Forma de la Columna</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Plume_Ratio">
+	<about>
+	<label>Proporción de la Columna</label>
+	  <description>Describe dónde se liberan partículas en la columna</description>
+	</about>
+	<default>0</default>
+      </number>
+
+</group>
+
+<group id = "Grid">
+	<about><label>Red</label><description></description></about>
+
+     <boolean id="Grid_loaded">
+	<about>
+	<label>¿Usar el archivo red cargado arriba?</label>
+	<description>'yes' will override the grid specifications below </description> </about>
+	<default>no</default>
+	</boolean>
+	
+    <number id="Min_East">
+	<about>
+	  <label>Número de km oeste del volcán a considerar  </label>
+	  <description></description>
+	</about>
+	<default>50</default>
+     </number>
+
+    <number id="Max_East">
+	<about>
+	  <label>Número de km este del volcán a considerar  </label>
+	  <description></description>
+	</about>
+	<default>50</default>
+     </number>
+
+    <number id="Min_North">
+	<about>
+	  <label>Número de km sur del volcán a considerar</label>
+	  <description></description>
+	</about>
+	<default>50</default>
+     </number>
+
+    <number id="Max_North">
+	<about>
+	  <label>Número de km norte del volcán a considerar</label>
+	  <description></description>
+	</about>
+	<default>50</default>
+     </number>
+
+    <number id="Elev_Landing">
+	<about>
+	  <label>Elevación de la superficie de caída (masl)</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+     </number>
+
+    <number id="Spacing">
+	<about>
+	  <label>Espacio entre los puntos de la red cuadrada (km)</label>
+	  <description></description> 
+	</about>
+	<default>1.5</default>
+     </number>
+</group>
+
+<group id = "Locations">
+	<about>
+	  <label>Graficar etiquetas (opcional)</label>
+	  <description></description>
+	</about>
+
+	<string id = "Volcano_Name">
+	  <about>
+		<label>Nombre del volcán:</label></about>
+	</string>
+
+<group id = "Locations2Plot">
+	<about>
+	<label>Opcional: Lugares adicionales a graficar </label>
+	</about>
+
+	<string id = "Location1">
+	  <about>
+		<label>Lugar 1:</label>
+	</about>
+	</string>
+
+
+      <number id="Loc_Easting1">
+	<about>
+	  <label>Easting 1 (UTM)</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Loc_Northing1">
+	<about>
+	  <label>Northing 1 (UTM)</label>
+	  <description>location northing UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+	<string id = "Location2">
+	  <about>
+		<label>Lugar 2:</label>
+	</about>
+	</string>
+
+
+      <number id="Loc_Easting2">
+	<about>
+	  <label>Easting 2 (UTM)</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Loc_Northing2">
+	<about>
+	  <label>Northing 2 (UTM)</label>
+	  <description>location northing UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+	<string id = "Location3">
+	  <about>
+		<label>Lugar 3:</label>
+	</about>
+	</string>
+
+      <number id="Loc_Easting3">
+	<about>
+	  <label>Easting 3 (UTM)</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Loc_Northing3">
+	<about>
+	  <label>Lugar 3 (UTM)</label>
+	  <description>location northing UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+
+	<string id = "Location4">
+	  <about>
+		<label>Lugar 4:</label>
+	</about>
+	</string>
+
+      <number id="Loc_Easting4">
+	<about>
+	  <label>Easting 4 (UTM)</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Loc_Northing4">
+	<about>
+	  <label>Northing 4 (UTM)</label>
+	  <description>location northing UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+
+	<string id = "Location5">
+	  <about>
+		<label>Lugar 5:</label>
+	</about>
+	</string>
+
+
+      <number id="Loc_Easting5">
+	<about>
+	  <label>Easting 5 (UTM)</label>
+	  <description>location easting UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Loc_Northing5">
+	<about>
+	  <label>Northing 5 (UTM)</label>
+	  <description>location northing UTM coordinate</description>
+	</about>
+	<default>0</default>
+      </number>
+</group>
+</group>
+
+<group id = "Plot_Refinement">
+	<about><label>Modificación de grafica (opcional)</label></about>
+
+      <boolean id="RePlot">
+	<about>
+	<label> Sólo re-graficar (no re-calcularlá la acumulación de masa)</label>
+	<description> </description> </about>
+	<default>no</default>
+	</boolean>
+
+<group id = "tabs">
+
+<group id = "Contours">
+	<about>
+	<label>Contornos</label></about>
+
+      <number id="Cmin">
+	<about>
+	  <label>Masa mínima a considerar (kg/m^2) :</label>
+	  <description></description>
+	</about>
+	<default>0.1</default>
+      </number>
+
+<string id = "Contours2Plot">
+	<about><label>Contornos a graficar (kg/m^2)</label></about>
+	<size>50x10</size>
+	<default>0.2
+0.3
+0.4
+0.5
+0.6
+0.8
+1.0 a
+2.0
+3.0
+4.0
+5.0
+6.0
+7.0
+8.0
+9.0
+10 a
+20
+30
+40
+50
+60
+70
+80
+90
+100 a
+200
+300
+400
+500
+600
+700
+800
+900
+1000 a
+2500
+5000
+7500
+10000 a
+25000
+50000
+75000
+100000 a
+250000
+500000
+750000
+1000000 a
+2500000
+5000000
+7500000
+10000000 a</default>
+</string>
+</group>
+
+
+<group id = "Map_Bound">
+	<about><label>Cambiar límites de grafica</label></about>
+
+      <number id="Extra_Left">
+	<about>
+	  <label>Espacio para agregar al límite izquierdo (km):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Extra_Right">
+	<about>
+	  <label>Espacio para agregar al límite derecho (km):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Extra_Top">
+	<about>
+	  <label>Espacio para agregar al límite superior (km):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Extra_Bottom">
+	<about>
+	  <label>Espacio para agregar al límite inferior (km):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+</group>
+
+<group id = "Plot_Labels">
+	<about><label>Desplazar etiquetas</label></about>
+
+      <number id="Shift_Volc_Name">
+	<about>
+	  <label>Desplazar etiqueta del volcán al este (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Volc_NameN">
+	<about>
+	  <label>Desplazar etiqueta del volcán al norte (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc1">
+	<about>
+	  <label>Desplazar etiqueta Lugar 1  al Este (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc1N">
+	<about>
+	  <label>Desplazar etiqueta Lugar 1  al Norte (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc2">
+	<about>
+	  <label>Desplazar etiqueta Lugar 2 al Este(m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc2N">
+	<about>
+	  <label>Desplazar etiqueta Lugar 2 al Norte (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc3">
+	<about>
+	  <label>Desplazar etiqueta Lugar 3 al Este (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc3N">
+	<about>
+	  <label>Desplazar etiqueta Lugar 3 al Norte (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc4">
+	<about>
+	  <label>Desplazar etiqueta Lugar 4 al este (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+	</number>
+
+      <number id="Shift_Loc4N">
+	<about>
+	  <label>Desplazar etiqueta Lugar 4 al norte (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc5">
+	<about>
+	  <label>Desplazar etiqueta Lugar 5 al Este (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+
+      <number id="Shift_Loc5N">
+	<about>
+	  <label>SDesplazar etiqueta Lugar 5 al Norte (m):</label>
+	  <description></description>
+	</about>
+	<default>0</default>
+      </number>
+</group>
+</group>
+</group>
+
+
+</group>
+
+
+  </input>
+ 
+</run>

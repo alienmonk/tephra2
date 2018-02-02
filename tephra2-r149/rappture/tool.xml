@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<run><action><label>Select</label></action>
+   <tool>
+  <id>tephra2</id>
+  <name>Tephra2</name>
+  <version>
+    <identifier>1.91</identifier>
+    <application>
+      <revision>149</revision>
+      <modified>2014-09-19 07:07:02 -0400 (Fri, 19 Sep 2014)</modified>
+      <installed>2014-09-19 10:24:17 EDT</installed>
+      <directory id="top">/apps/tephra2/r149</directory>
+      <directory id="tool">/apps/tephra2/r149/rappture</directory>
+    </application>
+  </version>
+      <title>Language_Select</title>
+      <about>Calculates the mass of tephra accumulation (kg) at points about a volcano</about>
+      <command>perl @tool/t2language.pl @driver</command>
+      <limits>
+        <cputime>unlimited</cputime>
+      </limits>
+      <layout>wizard</layout>
+      <action><label>Select</label></action>
+      <reportJobFailures>1</reportJobFailures>
+    </tool>
+    <input>
+
+<choice id="language">
+    <about>
+      <label>Select Langauge: </label>
+      <description></description>
+    </about>
+<default>English</default>
+    <option>
+      <about>
+        <label>English</label>
+        <description></description>
+      </about>
+      <value>English</value>
+    </option>
+    <option>
+      <about>
+        <label>Español</label>
+        <description></description>
+      </about>
+      <value>Spanish</value>
+    </option>
+  </choice>
+
+
+</input>
+</run>
