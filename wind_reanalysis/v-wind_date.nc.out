@@ -1,0 +1,212 @@
+netcdf v-wind-ruapehu {
+dimensions:
+	lat = 1 ;
+	level = 17 ;
+	lon = 1 ;
+	time = UNLIMITED ; // (8 currently)
+variables:
+	float lat(lat) ;
+		lat:units = "degrees_north" ;
+		lat:long_name = "Latitude" ;
+		lat:standard_name = "latitude" ;
+		lat:axis = "Y" ;
+		lat:actual_range = -40.f, -40.f ;
+	float level(level) ;
+		level:units = "millibar" ;
+		level:long_name = "Level" ;
+		level:positive = "down" ;
+		level:GRIB_id = 100s ;
+		level:GRIB_name = "hPa" ;
+		level:axis = "Z" ;
+		level:actual_range = 1000.f, 10.f ;
+	float lon(lon) ;
+		lon:units = "degrees_east" ;
+		lon:long_name = "Longitude" ;
+		lon:standard_name = "longitude" ;
+		lon:axis = "X" ;
+		lon:actual_range = 157.5f, 157.5f ;
+	double time(time) ;
+		time:long_name = "Time" ;
+		time:delta_t = "0000-00-00 06:00:00" ;
+		time:standard_name = "time" ;
+		time:axis = "T" ;
+		time:units = "hours since 1800-01-01 00:00:0.0" ;
+		time:actual_range = 1714032., 1714074. ;
+	float vwnd(time, level, lat, lon) ;
+		vwnd:long_name = "4xDaily V wind" ;
+		vwnd:units = "m/s" ;
+		vwnd:precision = 2s ;
+		vwnd:least_significant_digit = 1s ;
+		vwnd:GRIB_id = 34s ;
+		vwnd:GRIB_name = "VGRD" ;
+		vwnd:var_desc = "v-wind" ;
+		vwnd:level_desc = "Multiple levels" ;
+		vwnd:statistic = "Individual Obs" ;
+		vwnd:parent_stat = "Other" ;
+		vwnd:missing_value = -9.96921e+36f ;
+		vwnd:valid_range = -125.f, 160.f ;
+		vwnd:dataset = "NCEP Reanalysis" ;
+		vwnd:actual_range = 1.700012f, 19.00002f ;
+
+// global attributes:
+		:Conventions = "COARDS" ;
+		:title = "4x daily NMC reanalysis (1995)" ;
+		:description = "Data is from NMC initialized reanalysis\n",
+			"(4x/day).  It consists of most variables interpolated to\n",
+			"pressure surfaces from model (sigma) surfaces." ;
+		:platform = "Model" ;
+		:history = "Fri Mar 16 18:42:49 2018: ncks -O -d level,10.000000,1000.000000 -d lat,-39.280000 -d lon,157.570000 -d time,784,791 /Datasets/ncep.reanalysis/pressure/vwnd.1995.nc /Public/www/X125.237.227.30.74.18.42.49.nc\n",
+			"created 95/02/06 by Hoop (netCDF2.3)\n",
+			"Converted to chunked, deflated non-packed NetCDF4 2014/09" ;
+		:References = "http://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanalysis.html" ;
+		:dataset_title = "NCEP-NCAR Reanalysis 1" ;
+		:NCO = "4.2.6" ;
+data:
+
+ time = 1714032,   // time(0)
+    1714038,   // time(1)
+    1714044,   // time(2)
+    1714050,   // time(3)
+    1714056,   // time(4)
+    1714062,   // time(5)
+    1714068,   // time(6)
+    1714074;  // time(7)
+    
+ vwnd =
+  8.900009,  // vwnd(0,0,0,0)
+    9.500015,  // vwnd(0,1,0,0)
+    10.8,  // vwnd(0,2,0,0)
+    11.70001,  // vwnd(0,3,0,0)
+    11.8,  // vwnd(0,4,0,0)
+    12.70001,  // vwnd(0,5,0,0)
+    11.60001,  // vwnd(0,6,0,0)
+    15.70001,  // vwnd(0,7,0,0)
+    18.50002,  // vwnd(0,8,0,0)
+    19.00002,  // vwnd(0,9,0,0)
+    16.60001,  // vwnd(0,10,0,0)
+    13.60001,  // vwnd(0,11,0,0)
+    10.3,  // vwnd(0,12,0,0)
+    8.800003,  // vwnd(0,13,0,0)
+    5.800003,  // vwnd(0,14,0,0)
+    1.700012,  // vwnd(0,15,0,0)
+    6.500015,  // vwnd(0,16,0,0)
+    8.000015,  // vwnd(1,0,0,0)
+    9.400009,  // vwnd(1,1,0,0)
+    9.900009,  // vwnd(1,2,0,0)
+    11.40001,  // vwnd(1,3,0,0)
+    11.40001,  // vwnd(1,4,0,0)
+    13.00002,  // vwnd(1,5,0,0)
+    14.50002,  // vwnd(1,6,0,0)
+    18.70001,  // vwnd(1,7,0,0)
+    19.8,  // vwnd(1,8,0,0)
+    20.10001,  // vwnd(1,9,0,0)
+    18.3,  // vwnd(1,10,0,0)
+    12.90001,  // vwnd(1,11,0,0)
+    10.70001,  // vwnd(1,12,0,0)
+    6.200012,  // vwnd(1,13,0,0)
+    7.100006,  // vwnd(1,14,0,0)
+    6.000015,  // vwnd(1,15,0,0)
+    6.200012,  // vwnd(1,16,0,0)
+    7.600006,  // vwnd(2,0,0,0)
+    8.300003,  // vwnd(2,1,0,0)
+    9.300003,  // vwnd(2,2,0,0)
+    10.10001,  // vwnd(2,3,0,0)
+    11.3,  // vwnd(2,4,0,0)
+    12.20001,  // vwnd(2,5,0,0)
+    12.60001,  // vwnd(2,6,0,0)
+    16.60001,  // vwnd(2,7,0,0)
+    20.40001,  // vwnd(2,8,0,0)
+    20.90001,  // vwnd(2,9,0,0)
+    13.70001,  // vwnd(2,10,0,0)
+    7.100006,  // vwnd(2,11,0,0)
+    5.600006,  // vwnd(2,12,0,0)
+    4.400009,  // vwnd(2,13,0,0)
+    5.400009,  // vwnd(2,14,0,0)
+    6.000015,  // vwnd(2,15,0,0)
+    7.800003,  // vwnd(2,16,0,0)
+    2.500015,  // vwnd(3,0,0,0)
+    3.000015,  // vwnd(3,1,0,0)
+    4.600006,  // vwnd(3,2,0,0)
+    7.400009,  // vwnd(3,3,0,0)
+    6.800003,  // vwnd(3,4,0,0)
+    6.100006,  // vwnd(3,5,0,0)
+    7.500015,  // vwnd(3,6,0,0)
+    14.20001,  // vwnd(3,7,0,0)
+    18.90001,  // vwnd(3,8,0,0)
+    19.60001,  // vwnd(3,9,0,0)
+    14.40001,  // vwnd(3,10,0,0)
+    9.100006,  // vwnd(3,11,0,0)
+    5.500015,  // vwnd(3,12,0,0)
+    4.400009,  // vwnd(3,13,0,0)
+    5.500015,  // vwnd(3,14,0,0)
+    7.300003,  // vwnd(3,15,0,0)
+    4.600006,  // vwnd(3,16,0,0)
+    -3.399994,  // vwnd(4,0,0,0)
+    -3.399994,  // vwnd(4,1,0,0)
+    -1.599991,  // vwnd(4,2,0,0)
+    -0.8999939,  // vwnd(4,3,0,0)
+    -1.399994,  // vwnd(4,4,0,0)
+    -0.09999084,  // vwnd(4,5,0,0)
+    4.600006,  // vwnd(4,6,0,0)
+    8.500015,  // vwnd(4,7,0,0)
+    11.40001,  // vwnd(4,8,0,0)
+    12.00002,  // vwnd(4,9,0,0)
+    10.10001,  // vwnd(4,10,0,0)
+    5.400009,  // vwnd(4,11,0,0)
+    3.400009,  // vwnd(4,12,0,0)
+    4.300003,  // vwnd(4,13,0,0)
+    2.700012,  // vwnd(4,14,0,0)
+    5.100006,  // vwnd(4,15,0,0)
+    6.000015,  // vwnd(4,16,0,0)
+    -7.799988,  // vwnd(5,0,0,0)
+    -9.099991,  // vwnd(5,1,0,0)
+    -7.199997,  // vwnd(5,2,0,0)
+    -3.799988,  // vwnd(5,3,0,0)
+    -2.399994,  // vwnd(5,4,0,0)
+    -0.09999084,  // vwnd(5,5,0,0)
+    3.300003,  // vwnd(5,6,0,0)
+    3.300003,  // vwnd(5,7,0,0)
+    2.400009,  // vwnd(5,8,0,0)
+    2.200012,  // vwnd(5,9,0,0)
+    3.300003,  // vwnd(5,10,0,0)
+    5.400009,  // vwnd(5,11,0,0)
+    6.400009,  // vwnd(5,12,0,0)
+    2.700012,  // vwnd(5,13,0,0)
+    4.200012,  // vwnd(5,14,0,0)
+    7.100006,  // vwnd(5,15,0,0)
+    9.600006,  // vwnd(5,16,0,0)
+    -10.79999,  // vwnd(6,0,0,0)
+    -14.59999,  // vwnd(6,1,0,0)
+    -13.7,  // vwnd(6,2,0,0)
+    -9.999985,  // vwnd(6,3,0,0)
+    -7.599991,  // vwnd(6,4,0,0)
+    -4.099991,  // vwnd(6,5,0,0)
+    -5.499985,  // vwnd(6,6,0,0)
+    -4.999985,  // vwnd(6,7,0,0)
+    -4.899994,  // vwnd(6,8,0,0)
+    -3.299988,  // vwnd(6,9,0,0)
+    -0.5999908,  // vwnd(6,10,0,0)
+    -2.599991,  // vwnd(6,11,0,0)
+    5.000015,  // vwnd(6,12,0,0)
+    1.600006,  // vwnd(6,13,0,0)
+    7.800003,  // vwnd(6,14,0,0)
+    4.800003,  // vwnd(6,15,0,0)
+    8.400009,  // vwnd(6,16,0,0)
+    -8.599991,  // vwnd(7,0,0,0)
+    -11.09999,  // vwnd(7,1,0,0)
+    -10.29999,  // vwnd(7,2,0,0)
+    -7.899994,  // vwnd(7,3,0,0)
+    -9.099991,  // vwnd(7,4,0,0)
+    -10.29999,  // vwnd(7,5,0,0)
+    -13.09999,  // vwnd(7,6,0,0)
+    -12.49998,  // vwnd(7,7,0,0)
+    -8.799988,  // vwnd(7,8,0,0)
+    -5.899994,  // vwnd(7,9,0,0)
+    -6.099991,  // vwnd(7,10,0,0)
+    3.200012,  // vwnd(7,11,0,0)
+    3.900009,  // vwnd(7,12,0,0)
+    4.100006,  // vwnd(7,13,0,0)
+    3.300003,  // vwnd(7,14,0,0)
+    5.400009,  // vwnd(7,15,0,0)
+    6.000015;  // vwnd(7,16,0,0)
+    }

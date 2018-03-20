@@ -1,0 +1,212 @@
+netcdf u-wind-ruapehu {
+dimensions:
+	lat = 1 ;
+	level = 17 ;
+	lon = 1 ;
+	time = UNLIMITED ; // (8 currently)
+variables:
+	float lat(lat) ;
+		lat:units = "degrees_north" ;
+		lat:long_name = "Latitude" ;
+		lat:standard_name = "latitude" ;
+		lat:axis = "Y" ;
+		lat:actual_range = -40.f, -40.f ;
+	float level(level) ;
+		level:units = "millibar" ;
+		level:long_name = "Level" ;
+		level:positive = "down" ;
+		level:GRIB_id = 100s ;
+		level:GRIB_name = "hPa" ;
+		level:axis = "Z" ;
+		level:actual_range = 1000.f, 10.f ;
+	float lon(lon) ;
+		lon:units = "degrees_east" ;
+		lon:long_name = "Longitude" ;
+		lon:standard_name = "longitude" ;
+		lon:axis = "X" ;
+		lon:actual_range = 157.5f, 157.5f ;
+	double time(time) ;
+		time:long_name = "Time" ;
+		time:delta_t = "0000-00-00 06:00:00" ;
+		time:standard_name = "time" ;
+		time:axis = "T" ;
+		time:units = "hours since 1800-01-01 00:00:0.0" ;
+		time:actual_range = 1713312., 1713354. ;
+	float uwnd(time, level, lat, lon) ;
+		uwnd:long_name = "4xDaily U-wind" ;
+		uwnd:units = "m/s" ;
+		uwnd:precision = 2s ;
+		uwnd:least_significant_digit = 1s ;
+		uwnd:GRIB_id = 33s ;
+		uwnd:GRIB_name = "UGRD" ;
+		uwnd:var_desc = "u-wind" ;
+		uwnd:level_desc = "Multiple levels" ;
+		uwnd:statistic = "Individual Obs" ;
+		uwnd:parent_stat = "Other" ;
+		uwnd:missing_value = -9.96921e+36f ;
+		uwnd:valid_range = -125.f, 160.f ;
+		uwnd:dataset = "NCEP Reanalysis" ;
+		uwnd:actual_range = -2.699997f, 28.10001f ;
+
+// global attributes:
+		:Conventions = "COARDS" ;
+		:title = "4x daily NMC reanalysis (1995)" ;
+		:description = "Data is from NMC initialized reanalysis\n",
+			"(4x/day).  It consists of most variables interpolated to\n",
+			"pressure surfaces from model (sigma) surfaces." ;
+		:platform = "Model" ;
+		:history = "Fri Mar 16 18:41:22 2018: ncks -O -d level,10.000000,1000.000000 -d lat,-39.280000 -d lon,157.570000 -d time,664,671 /Datasets/ncep.reanalysis/pressure/uwnd.1995.nc /Public/www/X125.237.227.30.74.18.41.21.nc\n",
+			"created 95/02/06 by Hoop (netCDF2.3)\n",
+			"Converted to chunked, deflated non-packed NetCDF4 2014/09" ;
+		:References = "http://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanalysis.html" ;
+		:dataset_title = "NCEP-NCAR Reanalysis 1" ;
+		:NCO = "4.2.6" ;
+data:
+
+ time = 1713312,   // time(0)
+    1713318,   // time(1)
+    1713324,   // time(2)
+    1713330,   // time(3)
+    1713336,   // time(4)
+    1713342,   // time(5)
+    1713348,   // time(6)
+    1713354;  // time(7)
+    
+ uwnd =
+  -2.699997,  // uwnd(0,0,0,0)
+    -1.199997,  // uwnd(0,1,0,0)
+    0.2000122,  // uwnd(0,2,0,0)
+    2.000015,  // uwnd(0,3,0,0)
+    2.800003,  // uwnd(0,4,0,0)
+    4.000015,  // uwnd(0,5,0,0)
+    4.200012,  // uwnd(0,6,0,0)
+    6.700012,  // uwnd(0,7,0,0)
+    7.900009,  // uwnd(0,8,0,0)
+    13.10001,  // uwnd(0,9,0,0)
+    20.60001,  // uwnd(0,10,0,0)
+    23.3,  // uwnd(0,11,0,0)
+    18.3,  // uwnd(0,12,0,0)
+    14.60001,  // uwnd(0,13,0,0)
+    14.60001,  // uwnd(0,14,0,0)
+    17.70001,  // uwnd(0,15,0,0)
+    28.10001,  // uwnd(0,16,0,0)
+    -0.4999847,  // uwnd(1,0,0,0)
+    -0.5999908,  // uwnd(1,1,0,0)
+    1.525879e-05,  // uwnd(1,2,0,0)
+    2.600006,  // uwnd(1,3,0,0)
+    2.900009,  // uwnd(1,4,0,0)
+    4.700012,  // uwnd(1,5,0,0)
+    7.200012,  // uwnd(1,6,0,0)
+    10.3,  // uwnd(1,7,0,0)
+    12.40001,  // uwnd(1,8,0,0)
+    15.70001,  // uwnd(1,9,0,0)
+    22.50002,  // uwnd(1,10,0,0)
+    22.90001,  // uwnd(1,11,0,0)
+    19.8,  // uwnd(1,12,0,0)
+    16.8,  // uwnd(1,13,0,0)
+    16.3,  // uwnd(1,14,0,0)
+    19.70001,  // uwnd(1,15,0,0)
+    23.70001,  // uwnd(1,16,0,0)
+    -1.499985,  // uwnd(2,0,0,0)
+    -1.399994,  // uwnd(2,1,0,0)
+    -2.699997,  // uwnd(2,2,0,0)
+    -0.8999939,  // uwnd(2,3,0,0)
+    1.500015,  // uwnd(2,4,0,0)
+    3.000015,  // uwnd(2,5,0,0)
+    6.600006,  // uwnd(2,6,0,0)
+    10.8,  // uwnd(2,7,0,0)
+    15.10001,  // uwnd(2,8,0,0)
+    18.10001,  // uwnd(2,9,0,0)
+    24.3,  // uwnd(2,10,0,0)
+    24.70001,  // uwnd(2,11,0,0)
+    20.00002,  // uwnd(2,12,0,0)
+    16.8,  // uwnd(2,13,0,0)
+    13.00002,  // uwnd(2,14,0,0)
+    18.00002,  // uwnd(2,15,0,0)
+    25.8,  // uwnd(2,16,0,0)
+    -0.1999969,  // uwnd(3,0,0,0)
+    0.4000092,  // uwnd(3,1,0,0)
+    1.800003,  // uwnd(3,2,0,0)
+    3.000015,  // uwnd(3,3,0,0)
+    4.200012,  // uwnd(3,4,0,0)
+    7.000015,  // uwnd(3,5,0,0)
+    10.60001,  // uwnd(3,6,0,0)
+    13.70001,  // uwnd(3,7,0,0)
+    15.90001,  // uwnd(3,8,0,0)
+    20.00002,  // uwnd(3,9,0,0)
+    23.00002,  // uwnd(3,10,0,0)
+    22.10001,  // uwnd(3,11,0,0)
+    21.60001,  // uwnd(3,12,0,0)
+    19.20001,  // uwnd(3,13,0,0)
+    15.3,  // uwnd(3,14,0,0)
+    18.8,  // uwnd(3,15,0,0)
+    24.8,  // uwnd(3,16,0,0)
+    0.8000031,  // uwnd(4,0,0,0)
+    1.500015,  // uwnd(4,1,0,0)
+    3.300003,  // uwnd(4,2,0,0)
+    3.100006,  // uwnd(4,3,0,0)
+    5.500015,  // uwnd(4,4,0,0)
+    7.100006,  // uwnd(4,5,0,0)
+    8.900009,  // uwnd(4,6,0,0)
+    14.60001,  // uwnd(4,7,0,0)
+    17.90001,  // uwnd(4,8,0,0)
+    17.90001,  // uwnd(4,9,0,0)
+    19.8,  // uwnd(4,10,0,0)
+    22.40001,  // uwnd(4,11,0,0)
+    18.70001,  // uwnd(4,12,0,0)
+    16.40001,  // uwnd(4,13,0,0)
+    14.70001,  // uwnd(4,14,0,0)
+    13.3,  // uwnd(4,15,0,0)
+    27.90001,  // uwnd(4,16,0,0)
+    1.000015,  // uwnd(5,0,0,0)
+    1.000015,  // uwnd(5,1,0,0)
+    1.200012,  // uwnd(5,2,0,0)
+    3.100006,  // uwnd(5,3,0,0)
+    5.400009,  // uwnd(5,4,0,0)
+    7.600006,  // uwnd(5,5,0,0)
+    8.800003,  // uwnd(5,6,0,0)
+    10.70001,  // uwnd(5,7,0,0)
+    12.60001,  // uwnd(5,8,0,0)
+    13.50002,  // uwnd(5,9,0,0)
+    15.60001,  // uwnd(5,10,0,0)
+    17.20001,  // uwnd(5,11,0,0)
+    17.40001,  // uwnd(5,12,0,0)
+    16.3,  // uwnd(5,13,0,0)
+    14.8,  // uwnd(5,14,0,0)
+    16.00002,  // uwnd(5,15,0,0)
+    24.60001,  // uwnd(5,16,0,0)
+    -0.1999969,  // uwnd(6,0,0,0)
+    -1.399994,  // uwnd(6,1,0,0)
+    -0.5999908,  // uwnd(6,2,0,0)
+    2.100006,  // uwnd(6,3,0,0)
+    3.100006,  // uwnd(6,4,0,0)
+    3.600006,  // uwnd(6,5,0,0)
+    5.500015,  // uwnd(6,6,0,0)
+    7.000015,  // uwnd(6,7,0,0)
+    7.000015,  // uwnd(6,8,0,0)
+    8.300003,  // uwnd(6,9,0,0)
+    11.3,  // uwnd(6,10,0,0)
+    14.10001,  // uwnd(6,11,0,0)
+    14.8,  // uwnd(6,12,0,0)
+    15.70001,  // uwnd(6,13,0,0)
+    10.90001,  // uwnd(6,14,0,0)
+    15.60001,  // uwnd(6,15,0,0)
+    24.20001,  // uwnd(6,16,0,0)
+    -2.699997,  // uwnd(7,0,0,0)
+    -4.799988,  // uwnd(7,1,0,0)
+    -4.699997,  // uwnd(7,2,0,0)
+    -1.399994,  // uwnd(7,3,0,0)
+    0.8000031,  // uwnd(7,4,0,0)
+    1.200012,  // uwnd(7,5,0,0)
+    2.400009,  // uwnd(7,6,0,0)
+    4.000015,  // uwnd(7,7,0,0)
+    5.900009,  // uwnd(7,8,0,0)
+    7.600006,  // uwnd(7,9,0,0)
+    10.8,  // uwnd(7,10,0,0)
+    14.40001,  // uwnd(7,11,0,0)
+    16.10001,  // uwnd(7,12,0,0)
+    13.8,  // uwnd(7,13,0,0)
+    17.90001,  // uwnd(7,14,0,0)
+    17.60001,  // uwnd(7,15,0,0)
+    25.8;  // uwnd(7,16,0,0)
+    }
